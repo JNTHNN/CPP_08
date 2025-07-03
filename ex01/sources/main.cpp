@@ -8,7 +8,21 @@ int main(void)
     sp.addNumber(17);
     sp.addNumber(9);
     sp.addNumber(11);
-    sp.addNumber(12);
     std::cout << sp.shortestSpan() << std::endl;
     std::cout << sp.longestSpan() << std::endl;
+    
+    Span bigsp = Span(6);
+    int arr[] = {4, 5, 8, 2, 6, 10, 3};
+    std::vector<int> ok(arr, arr + 7);
+    try
+    {
+        bigsp.addMultiplesNumbers(ok);
+        
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+    std::cout << bigsp.shortestSpan() << std::endl;
 }

@@ -21,6 +21,7 @@ class   Span
         Span    operator=(const Span& base);
 
         void    addNumber(int num);
+        void    addMultiplesNumbers(std::vector<int> v);
         int    shortestSpan();
         int    longestSpan();
 
@@ -35,6 +36,7 @@ class   Span
             public:
                 virtual const char* what() const throw();
         };
+
 };
 
 

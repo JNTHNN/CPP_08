@@ -43,6 +43,13 @@ void    Span::addNumber(int num) // a chier
         throw FullStorage();
 }
 
+void    Span::addMultiplesNumbers(std::vector<int> v)
+{
+    for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it)
+        addNumber(*it);
+
+}
+
 int    Span::shortestSpan(void)
 {
     // montre le vecteur
