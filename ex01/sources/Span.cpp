@@ -10,12 +10,12 @@ const char* Span::SmallStorage::what() const throw()
     return "Error: the storage has less than 2 numbers.";
 }
 
-Span::Span(unsigned int n): _v(n)
+Span::Span(unsigned int n): _v(), _maxSize(n)
 {
     return;
 }
 
-Span::Span(const Span& copied): _v(copied._v)
+Span::Span(const Span& copied): _v(copied._v), _maxSize(copied._maxSize)
 {
     return;
 }
@@ -23,7 +23,10 @@ Span::Span(const Span& copied): _v(copied._v)
 Span    Span::operator=(const Span& base)
 {
     if (this != &base)
+    {
         this->_v = base._v;
+        this->_maxSize = base._maxSize;
+    }
     return *this;
 }
 
@@ -32,42 +35,43 @@ Span::~Span(void)
     return;
 }
 
-void    Span::addNumber(int num)
+void    Span::addNumber(int num) // a chier
 {
-    try
-    {
-        _v.push_back(num);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    
+    if (this->_v.size() < this->_maxSize)
+        this->_v.insert(this->_v.end(), num);
+    else
+        throw FullStorage();
 }
 
 int    Span::shortestSpan(void)
 {
+    // montre le vecteur
+    for (std::vector<int>::iterator it = this->_v.begin(); it != this->_v.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
     if (_v.size() < 2)
         throw SmallStorage();
 
-    int span = 100;
+    int     span = INT32_MAX;
     Span    copy(*this);
 
-    for (std::vector<int>::iterator it = _v.begin(); it != _v.end(); ++it)
+    std::sort(copy._v.begin(), copy._v.end());
+    for (std::vector<int>::iterator it = copy._v.begin(); it != copy._v.end() - 1 ; ++it)
     {
-        for(std::vector<int>::iterator itc = copy._v.begin(); itc != copy._v.end(); ++itc)
-        {
-            if (std::abs(*it - *itc) < span)
-                span = std::abs(*it - *itc);
-            std::cout << span << ": " << *it << ": " << *itc << std::endl;
-        }
+            if (span > std::abs(*(it + 1) - *it))
+                span  = std::abs(*(it + 1) - *it);
     }
     return span;   
 }
     
-void    Span::longestSpan(void)
+int    Span::longestSpan(void)
 {
     if (_v.size() < 2)
         throw SmallStorage();
+
+    std::vector<int>::iterator min = std::min_element(this->_v.begin(), this->_v.end());
+    std::vector<int>::iterator max = std::max_element(this->_v.begin(), this->_v.end());
+
+    return std::abs(*max - *min);
 
 }

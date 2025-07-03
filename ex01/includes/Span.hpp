@@ -4,11 +4,15 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <algorithm>
+#include <cmath>
+#include <stdint.h>
 
 class   Span
 {
     private:
         std::vector<int> _v;
+        unsigned int    _maxSize;
     
     public:
         Span(unsigned int n);
@@ -18,7 +22,7 @@ class   Span
 
         void    addNumber(int num);
         int    shortestSpan();
-        void    longestSpan();
+        int    longestSpan();
 
         class   FullStorage: public std::exception
         {
