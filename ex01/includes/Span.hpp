@@ -5,8 +5,7 @@
 #include <vector>
 #include <cstdlib>
 #include <algorithm>
-#include <cmath>
-#include <stdint.h>
+#include <climits>
 
 class   Span
 {
@@ -18,10 +17,10 @@ class   Span
         Span(unsigned int n);
         Span(const Span& copied);
         ~Span();
-        Span    operator=(const Span& base);
+        Span&    operator=(const Span& base);
 
         void    addNumber(int num);
-        void    addMultiplesNumbers(std::vector<int> v);
+        void    addMultiplesNumbers(const std::vector<int>& v);
         int    shortestSpan();
         int    longestSpan();
 

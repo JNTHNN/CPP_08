@@ -20,7 +20,7 @@ Span::Span(const Span& copied): _v(copied._v), _maxSize(copied._maxSize)
     return;
 }
 
-Span    Span::operator=(const Span& base)
+Span&    Span::operator=(const Span& base)
 {
     if (this != &base)
     {
@@ -35,7 +35,7 @@ Span::~Span(void)
     return;
 }
 
-void    Span::addNumber(int num) // a chier
+void    Span::addNumber(int num)
 {
     if (this->_v.size() < this->_maxSize)
         this->_v.insert(this->_v.end(), num);
@@ -43,23 +43,19 @@ void    Span::addNumber(int num) // a chier
         throw FullStorage();
 }
 
-void    Span::addMultiplesNumbers(std::vector<int> v)
+void    Span::addMultiplesNumbers(const std::vector<int>& v)
 {
-    for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it)
-        addNumber(*it);
-
+    if (this->_v.size() + v.size() > this->_maxSize)
+        throw FullStorage();
+    this->_v.insert(this->_v.end(), v.begin(), v.end());
 }
 
 int    Span::shortestSpan(void)
 {
-    // montre le vecteur
-    for (std::vector<int>::iterator it = this->_v.begin(); it != this->_v.end(); ++it)
-        std::cout << *it << " ";
-    std::cout << std::endl;
     if (_v.size() < 2)
         throw SmallStorage();
 
-    int     span = INT32_MAX;
+    int     span = INT_MAX;
     Span    copy(*this);
 
     std::sort(copy._v.begin(), copy._v.end());
