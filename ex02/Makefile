@@ -1,7 +1,7 @@
-NAME 		:= easyfind
+NAME 		:= mutantStack
 
 CPP 		:= c++
-CPPFLAGS	:= -Wall -Wextra -Werror -std=c++98 -MMD -fsanitize=address -g 
+CPPFLAGS	:= -Wall -Wextra -Werror -std=c++98 -MMD
 
 SRC_DIR		:=	sources/
 OBJ_DIR		:=	.obj/
@@ -20,11 +20,11 @@ DEP			:=	$(addprefix $(DEP_DIR), $(DEP_FILES))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		@echo CREATING EASYFIND
+		@echo CREATING MUTANTSTACK
 		@$(CPP) $(CPPFLAGS) -o $(NAME) $(OBJ)
 		@sleep 1
 		@tput cuu1 dl1
-		@echo "EASYFIND CREATED  " 
+		@echo "MUTANTSTACK CREATED  " 
 
 
 $(OBJ_DIR)%.o:$(SRC_DIR)%.cpp
@@ -36,13 +36,13 @@ $(OBJ_DIR)%.o:$(SRC_DIR)%.cpp
 
 clean:
 	@$(RM) -fr $(OBJ_DIR) $(DEP_DIR)
-	@echo EASYFIND DESTROYED BYE !
+	@echo MUTANTSTACK DESTROYED BYE !
 	@sleep 1
 	@tput cuu1 dl1
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo EASYFIND DESTROYED BYE !
+	@echo MUTANTSTACK DESTROYED BYE !
 	@sleep 1
 	@tput cuu1 dl1
 
