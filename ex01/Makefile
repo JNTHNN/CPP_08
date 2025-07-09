@@ -1,7 +1,7 @@
 NAME 		:= span
 
 CPP 		:= c++
-CPPFLAGS	:= -Wall -Wextra -Werror -std=c++98 -MMD -fsanitize=address -g 
+CPPFLAGS	:= -Wall -Wextra -Werror -std=c++98 -MMD
 
 SRC_DIR		:=	sources/
 OBJ_DIR		:=	.obj/

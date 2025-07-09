@@ -3,8 +3,8 @@
 
 int main(void)
 {
-    MutantStack<int> ok;
-    const MutantStack<int> ok2;
+    MutantStack<int>        ok;
+    const MutantStack<int>  ok2;
 
     ok.push(1);
     ok.push(2);
@@ -42,7 +42,7 @@ int main(void)
         mstack.push(5);
         mstack.push(737);
         mstack.push(0);
-        
+
         MutantStack<int>::iterator it = mstack.begin();
         MutantStack<int>::iterator ite = mstack.end();
         ++it;
@@ -57,7 +57,6 @@ int main(void)
     std::cout << std::endl;
     std::cout << "--= TEST STD::LIST =--" << std::endl;
     std::cout << std::endl;
-    // Test std::list
     {
         std::list<int> mstack;
         mstack.push_back(5);

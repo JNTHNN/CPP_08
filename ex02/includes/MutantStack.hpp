@@ -13,7 +13,7 @@ class   MutantStack: public std::stack<T>
 	public:
 		MutantStack();
 		MutantStack(const MutantStack& copied);
-		MutantStack& operator=(const MutantStack& base);
+		MutantStack&	operator=(const MutantStack& base);
 		~MutantStack();
 
 		typedef typename std::stack<T>::container_type::iterator iterator;
@@ -21,14 +21,14 @@ class   MutantStack: public std::stack<T>
 		typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
 		typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 
-		iterator begin();
-		iterator end();
-		const_iterator begin() const;
-		const_iterator end() const;
-		reverse_iterator rbegin();
-		reverse_iterator rend();
-		const_reverse_iterator rbegin() const;
-		const_reverse_iterator rend() const;
+		iterator				begin();
+		iterator				end();
+		const_iterator			begin() const;
+		const_iterator			end() const;
+		reverse_iterator		rbegin();
+		reverse_iterator		rend();
+		const_reverse_iterator	rbegin() const;
+		const_reverse_iterator	rend() const;
 };
 
 template <typename T>

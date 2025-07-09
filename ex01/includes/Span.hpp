@@ -10,32 +10,32 @@
 
 class   Span
 {
-    private:
-        std::vector<int> _v;
-        unsigned int    _maxSize;
-    
-    public:
-        Span(unsigned int n);
-        Span(const Span& copied);
-        ~Span();
-        Span    operator=(const Span& base);
+	private:
+		std::vector<int>    _v;
+		unsigned int        _maxSize;
+	
+	public:
+		Span(unsigned int n);
+		Span(const Span& copied);
+		~Span();
+		Span	operator=(const Span& base);
 
-        void    addNumber(int num);
-        void    addMultiplesNumbers(std::vector<int> v);
-        int    shortestSpan();
-        int    longestSpan();
+		void	addNumber(int num);
+		void	addMultiplesNumbers(std::vector<int> v);
+		int		shortestSpan();
+		int		longestSpan();
 
-        class   FullStorage: public std::exception
-        {
-            public:
-                virtual const char* what() const throw();
-        };
+		class	FullStorage: public std::exception
+		{
+			public:
+				virtual const char*	what() const throw();
+		};
 
-        class   SmallStorage: public std::exception
-        {
-            public:
-                virtual const char* what() const throw();
-        };
+		class	SmallStorage: public std::exception
+		{
+			public:
+				virtual const char*	what() const throw();
+		};
 
 };
 
