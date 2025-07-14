@@ -52,10 +52,9 @@ void	Span::addMultiplesNumbers(std::vector<int> v)
 
 int Span::shortestSpan(void)
 {
-	// montre le vecteur
-	for (std::vector<int>::iterator it = this->_v.begin(); it != this->_v.end(); ++it)
+	for (std::vector<int>::iterator it = _v.begin(); it != _v.end(); ++it)
 		std::cout << *it << " ";
-	std::cout << std::endl;
+
 	if (_v.size() < 2)
 		throw SmallStorage();
 

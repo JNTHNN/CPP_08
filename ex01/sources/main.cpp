@@ -28,4 +28,6 @@ int main(void)
 	}
 	
 	std::cout << bigsp.shortestSpan() << std::endl;
+
+	std::cout << std::endl;
 }
