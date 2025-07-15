@@ -10,7 +10,9 @@ const char* NotFoundException::what() const throw()
 
 int main(void)
 {
-	std::vector<int>    v = {1, 101, 3, 42};
+	std::vector<int>    v;
+	v.push_back(1);
+	v.push_back(101);
 
 	// Test valide
 	try
