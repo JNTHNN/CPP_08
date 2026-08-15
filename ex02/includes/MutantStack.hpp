@@ -46,7 +46,7 @@ MutantStack<T>::MutantStack(const MutantStack& copied)
 template <typename T>
 MutantStack<T>& MutantStack<T>::operator=(const MutantStack& base)
 {
-	if (*this != base)
+	if (this != &base)
 		std::stack<T>::operator=(base);
 	return *this;
 }

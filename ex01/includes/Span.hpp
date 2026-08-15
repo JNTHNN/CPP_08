@@ -21,9 +21,15 @@ class   Span
 		Span	operator=(const Span& base);
 
 		void	addNumber(int num);
-		void	addMultiplesNumbers(std::vector<int> v);
-		int		shortestSpan();
-		int		longestSpan();
+		template <typename Iterator>
+		void	addNumbers(Iterator begin, Iterator end)
+		{
+			if (static_cast<unsigned int>(std::distance(begin, end)) > _maxSize - _v.size())
+				throw FullStorage();
+			_v.insert(_v.end(), begin, end);
+		}
+		unsigned int		shortestSpan();
+		unsigned int		longestSpan();
 
 		class	FullStorage: public std::exception
 		{

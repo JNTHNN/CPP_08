@@ -11,13 +11,12 @@ class   NotFoundException: public std::exception
 };
 
 template <typename T>
-void	easyfind(T& container, int i)
+typename T::iterator	easyfind(T& container, int i)
 {
 	typename T::iterator	it = std::find(container.begin(), container.end(), i);
-	if (it != container.end())
-		std::cout << "Found! Index: " << std::distance(container.begin(), it) << std::endl;
-	else
+	if (it == container.end())
 		throw NotFoundException();
+	return it;
 }
 
 #endif
