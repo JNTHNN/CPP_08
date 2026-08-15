@@ -17,7 +17,8 @@ int main(void)
 	// Test valide
 	try
 	{
-		easyfind(v, 101);
+		std::vector<int>::iterator it = easyfind(v, 101);
+		std::cout << "Found: " << *it << std::endl;
 	}
 	catch(const std::exception&	e)
 	{

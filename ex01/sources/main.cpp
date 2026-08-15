@@ -12,14 +12,14 @@ int main(void)
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 	
-	Span    bigsp = Span(6);
+	Span    bigsp = Span(7);
 
 	int	arr[] = {4, 5, 8, 2, 6, 10, 3};
 	std::vector<int>	ok(arr, arr + 7);
 	
 	try
 	{
-		bigsp.addMultiplesNumbers(ok);
+		bigsp.addNumbers(ok.begin(), ok.end());
 		
 	}
 	catch(const std::exception& e)

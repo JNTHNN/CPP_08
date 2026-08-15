@@ -43,35 +43,27 @@ void	Span::addNumber(int num) // a chier
 		throw FullStorage();
 }
 
-void	Span::addMultiplesNumbers(std::vector<int> v)
+
+
+unsigned int Span::shortestSpan(void)
 {
-	for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it)
-		addNumber(*it);
-
-}
-
-int Span::shortestSpan(void)
-{
-	// for (std::vector<int>::iterator it = _v.begin(); it != _v.end(); ++it)
-	// 	std::cout << *it << " ";
-	// std::cout << std::endl;
-
 	if (_v.size() < 2)
 		throw SmallStorage();
 
-	int     span = INT32_MAX;
+	unsigned int     span = UINT32_MAX;
 	Span    copy(*this);
 
 	std::sort(copy._v.begin(), copy._v.end());
 	for (std::vector<int>::iterator it = copy._v.begin(); it != copy._v.end() - 1 ; ++it)
 	{
-			if (span > std::abs(*(it + 1) - *it))
-				span  = std::abs(*(it + 1) - *it);
+		unsigned int diff = static_cast<unsigned int>(*(it + 1)) - static_cast<unsigned int>(*it);
+		if (span > diff)
+			span = diff;
 	}
 	return span;   
 }
 	
-int    Span::longestSpan(void)
+unsigned int    Span::longestSpan(void)
 {
 	if (_v.size() < 2)
 		throw SmallStorage();
@@ -79,6 +71,5 @@ int    Span::longestSpan(void)
 	std::vector<int>::iterator min = std::min_element(this->_v.begin(), this->_v.end());
 	std::vector<int>::iterator max = std::max_element(this->_v.begin(), this->_v.end());
 
-	return std::abs(*max - *min);
-
+	return static_cast<unsigned int>(*max) - static_cast<unsigned int>(*min);
 }
